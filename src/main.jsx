@@ -40,7 +40,7 @@ const skillGroups = [
   {
     title: "AI & ML",
     icon: Sparkles,
-    items: ["OpenAI API", "Gemini API", "Vertex AI", "Embeddings", "Model fine-tuning", "Prompt engineering", "FAISS vector search"],
+    items: ["LangChain", "RAG", "AI Agents", "FAISS", "Embeddings", "LLM Fine-Tuning", "Prompt engineering", "OpenAI API", "Gemini API", "Vertex AI"],
   },
   {
     title: "Frontend",
@@ -79,45 +79,6 @@ const skillGroups = [
   },
 ];
 
-// const experiences = [
-//   {
-//     role: "Senior Software Developer",
-//     company: "NetDiverse",
-//     location: "Salt Lake City, UT",
-//     period: "May 2026 - Present",
-//     highlights: [
-//       "Architected NeuroPod, an AI-powered E-Rate procurement platform processing 8,000+ bids per funding year for schools and libraries.",
-//       "Engineered the core AI pipeline with multi-model fine-tuning, dataset preparation, FAISS product matching, and semantic classification.",
-//       "Led the Odoo 15-to-19 upgrade for 10+ custom addons with zero-downtime migration planning.",
-//       "Aligned backend automation and ERP integration workstreams around scalable system design decisions.",
-//     ],
-//   },
-//   {
-//     role: "Software Developer",
-//     company: "NetDiverse",
-//     location: "Salt Lake City, UT",
-//     period: "Jan 2024 - May 2026",
-//     highlights: [
-//       "Reduced cloud infrastructure costs by 50% through AWS database consolidation and performance tuning.",
-//       "Architected Jidou-gu, Dealio, and Updater, eliminating manual workflows and reducing effort by 60-70%.",
-//       "Built Odoo integrations for cost fetching, product imports, FCC rate updates, and RFP link auditing.",
-//       "Delivered a Flask internal portal for self-serve database tools, AI prompts, and deal-processing dashboards.",
-//       "Maintained 25+ custom Odoo addons supporting sales, approvals, projects, helpdesk, and service tracking.",
-//     ],
-//   },
-//   {
-//     role: "Associate Software Engineer",
-//     company: "ACS Solutions",
-//     location: "Hyderabad, India",
-//     period: "Feb 2021 - Nov 2022",
-//     highlights: [
-//       "Developed user-centric features for a healthcare insurance platform while reducing application errors by 50%.",
-//       "Built Azure Cognitive Search modules for intelligent hospital preference matching.",
-//       "Optimized platform architecture to cut processing time by 60% and improve scalability.",
-//       "Collaborated with product and QA teams in Agile delivery cycles.",
-//     ],
-//   },
-// ];
 
 const experiences = [
   {
@@ -130,9 +91,10 @@ const experiences = [
         period: "May 2026 - Present",
         highlights: [
           "Architected NeuroPod, an AI-powered E-Rate procurement platform processing 8,000+ bids per funding year for schools and libraries.",
-          "Engineered the core AI pipeline with multi-model fine-tuning, dataset preparation, FAISS product matching, and semantic classification.",
+          "Engineered the core AI pipeline with multi-model fine-tuning, dataset preparation, FAISS product matching, and semantic classification, reducing manual effort by ~80%",
+          "Developed FAISS‑based RAG pipelines to surface historical bid data, enhancing both accuracy and explainability of AI recommendations.",
           "Led the Odoo 15-to-19 upgrade for 10+ custom addons with zero-downtime migration planning.",
-          "Aligned backend automation and ERP integration workstreams around scalable system design decisions.",
+          "Drove cross-team alignment on automation strategy, accelerating delivery across backend and ERP workstreams.",
         ],
       },
       {
@@ -172,8 +134,8 @@ const projects = [
     name: "NeuroPod",
     subtitle: "AI-Powered E-Rate Automation Platform",
     company: "NetDiverse",
-    impact: "Automates RFP analysis, product matching, workflow classification, and Odoo ERP write-back.",
-    stack: ["Python", "OpenAI", "Gemini", "Vertex AI", "FAISS", "MySQL", "Odoo XML-RPC"],
+    impact: "Automates Form 470 RFP analysis using multi‑model LLMs, FAISS‑based product matching, RAG retrieval, workflow classification, and automated Odoo ERP write‑back.",
+    stack: ["Python", "OpenAI", "Gemini", "Vertex AI", "RAG", "FAISS", "MySQL", "Odoo XML-RPC"],
   },
   {
     name: "Jidou-gu",
@@ -201,7 +163,7 @@ const projects = [
     name: "NetDiverse Internal Website",
     subtitle: "Operational Staff Portal",
     company: "NetDiverse",
-    impact: "Centralizes AI prompting, database CRUD, backups, reporting, and deal lookups for non-technical staff.",
+    impact: "Centralizes LangChain‑powered multi‑model AI workflows, database operations, automated Google Drive backups, Odoo validation reporting, and deal lookup into one unified automation platform for non-technical staff.",
     stack: ["Flask", "Python", "MySQL", "Jinja2", "Gunicorn", "Google Drive API", "OpenAI"],
   },
   {
@@ -310,7 +272,7 @@ function App() {
         </div>
         <aside className="hero-panel" aria-label="Career highlights" data-reveal>
           <div>
-            <span>5+</span>
+            <span>4+</span>
             <p>Years building full-stack and automation systems</p>
           </div>
           <div>
@@ -383,47 +345,6 @@ function App() {
           })}
         </div>
       </section>
-      {/* 
-      <section className="section timeline-section" id="experience">
-        <div className="section-heading" data-reveal>
-          <p className="eyebrow">Experience</p>
-          <h2>Progressively larger ownership across automation, ERP, and enterprise platforms.</h2>
-        </div>
-        <div className="experience-tabs" data-reveal>
-          <div className="experience-tab-list" aria-label="Experience selector">
-            {experiences.map((job, index) => (
-              <button
-                className={activeExperience === index ? "is-active" : ""}
-                key={`${job.role}-${job.company}`}
-                onClick={() => setActiveExperience(index)}
-                type="button"
-              >
-                <span>{job.company}</span>
-                <small>{job.role}</small>
-              </button>
-            ))}
-          </div>
-          <article className="experience-panel" key={activeExperience}>
-            <div className="timeline-meta">
-              <CalendarDays size={18} aria-hidden="true" />
-              <span>{experiences[activeExperience].period}</span>
-            </div>
-            <div className="timeline-content">
-              <h3>{experiences[activeExperience].role}</h3>
-              <p className="company">
-                {experiences[activeExperience].company} - {experiences[activeExperience].location}
-              </p>
-              <ul key={experiences[activeExperience].role}>
-                {experiences[activeExperience].highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-      */}
-
       <section className="section timeline-section" id="experience">
         <div className="section-heading" data-reveal>
           <p className="eyebrow">Experience</p>
